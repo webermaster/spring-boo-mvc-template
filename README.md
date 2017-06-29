@@ -35,7 +35,9 @@ profile runs both the `Integration` and `Smoke` JUnit Categories.
 ##Further Reading
 
 [Spring-Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
-[Spring-Boot Configuration Properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
-[Spring-Boot Actuator](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
-[Spring Security](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-security.html)
 
+[Spring-Boot Configuration Properties](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html)
+
+[Spring-Boot Actuator](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
+
+[Spring Security](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-security.html)
