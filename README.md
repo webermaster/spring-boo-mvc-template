@@ -1,4 +1,4 @@
-#Slalom STL Spring-Boot Spring MVC Project Template
+#Webermaster Spring-Boot Spring MVC Project Template
 ---
 
 This project is a template for Spring-Boot MVC projects in Java 8.
