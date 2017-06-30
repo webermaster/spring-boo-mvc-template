@@ -15,12 +15,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.fail;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class, loader = AnnotationConfigContextLoader.class)
@@ -63,8 +66,28 @@ public class HelloIntegrationTest {
                     new HttpEntity<>(null, headersFactory.getHeaders()),
                     new ParameterizedTypeReference<Map<String, Object>>() {
                     });
+            fail("Should've thrown an error");
         } catch (HttpStatusCodeException hsce) {
             assertEquals(HttpStatus.NOT_FOUND, hsce.getStatusCode());
+        }
+    }
+
+    @Test
+    @Category(Integration.class)
+    public void helloReturnsUnauthorized() {
+        //act
+        try {
+            MultiValueMap<String, String> headers = headersFactory.getHeaders();
+            headers.replace("Authorization", Collections.singletonList("Basic foobar"));
+            restTemplate.exchange(
+                    this.host + "/hello/name",
+                    HttpMethod.GET,
+                    new HttpEntity<>(null, headers),
+                    new ParameterizedTypeReference<Map<String, Object>>() {
+                    });
+            fail("Should've thrown an error");
+        } catch (HttpStatusCodeException hsce) {
+            assertEquals(HttpStatus.UNAUTHORIZED, hsce.getStatusCode());
         }
     }
 }
